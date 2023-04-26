@@ -10,7 +10,7 @@ check libcudnn
 
 if ! command -v nvcc &>/dev/null
 then
-    echo -e "\nninvcc is not installed\n"
+    echo -e "\nnvcc is not installed\n"
 else
     nvcc --version
 fi
