@@ -1,26 +1,25 @@
 #!/bin/bash
 
-# https://stackoverflow.com/a/47436840
+# Adapted from https://stackoverflow.com/a/47436840
 
 function lib_installed() { /sbin/ldconfig -N -v $(sed 's/:/ /' <<< $LD_LIBRARY_PATH) 2>/dev/null | grep $1; }
-function check() { lib_installed $1 && echo "$1 is installed" || echo "ERROR: $1 is NOT installed"; }
-check libcuda
+function check() { lib_installed $1 && echo "$1 is installed" || echo -e "\nERROR: $1 is NOT installed\n"; }
+check libcuda.so
 check libcudart
-
-function lib_installed() { /sbin/ldconfig -N -v $(sed 's/:/ /' <<< $LD_LIBRARY_PATH) 2>/dev/null | grep $1; }
-function check() { lib_installed $1 && echo "$1 is installed" || echo "ERROR: $1 is NOT installed"; }
 check libcudnn
 
 if ! command -v nvcc &>/dev/null
 then
-    echo "nvcc is not installed"
+    echo -e "\nninvcc is not installed\n"
 else
     nvcc --version
 fi
 
 if ! command -v nvidia-smi &>/dev/null
 then
-    echo "nvidia-smi is not installed"
+    echo -e "\nnvidia-smi is not installed\n"
 else
     nvidia-smi
 fi
+
+echo "Run check-nvidia-cuda to test GPU funtion for training/testing on the MNIST dataset."

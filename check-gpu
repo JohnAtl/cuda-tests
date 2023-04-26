@@ -3,14 +3,25 @@
 # https://github.com/pytorch/examples/tree/main/mnist
 
 from __future__ import print_function
-import argparse
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
-import torch.optim as optim
-from torchvision import datasets, transforms
-from torch.optim.lr_scheduler import StepLR
 
+try:
+    import argparse
+    import torch
+    import torch.nn as nn
+    import torch.nn.functional as F
+    import torch.optim as optim
+    from torchvision import datasets, transforms
+    from torch.optim.lr_scheduler import StepLR
+except ImportError as error:
+    print("Module missing. To create an environment to run this test:\n")
+    print("python -m venv nvtest")
+    print("source nvtest/bin/activate")
+    print("pip install torchvision")
+    print("\nThis should install all required modules. You can then rerun check-gpu.")
+    print("Deactivate the environment by typing 'deactivate'")
+    print("Delete the environment by deleting the nvtest folder.")
+    print("\n")
+    exit(1)
 
 class Net(nn.Module):
     def __init__(self):
