@@ -1,3 +1,5 @@
+# https://github.com/pytorch/examples/tree/main/mnist
+
 from __future__ import print_function
 import argparse
 import torch
