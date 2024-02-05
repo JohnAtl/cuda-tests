@@ -25,4 +25,4 @@ fi
 echo "Python check:"
 python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))" 2>/dev/null | grep PhysicalDevice
 echo ""
-echo "Run check-gpu-torch to test GPU funtion for training/testing on the MNIST dataset."
+echo "Run check-gpu-with-torch to test GPU funtion for training/testing on the MNIST dataset."
