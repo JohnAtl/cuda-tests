@@ -21,6 +21,7 @@ except ImportError as error:
     print("Deactivate the environment by typing 'deactivate'")
     print("Delete the environment by deleting the nvtest folder.")
     print("\n")
+    raise(error)
     exit(1)
 
 class Net(nn.Module):
@@ -121,6 +122,9 @@ def main():
 
     if use_cuda:
         device = torch.device("cuda")
+    else:
+        print("no cuda :-(")
+        exit(1)
 
     train_kwargs = {'batch_size': args.batch_size}
     test_kwargs = {'batch_size': args.test_batch_size}
